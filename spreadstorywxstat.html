@@ -1,0 +1,559 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <!-- Site Title -->
+    <title>DataStory微信传播分析</title>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8"/>
+    <!-- 	<meta name="keywords" content="photography, commercials, exposure videos, senior pictures">
+        <meta name="description" content="Your company description.">
+        <meta name="author" content="TutToaster.com/authors/CodyRobertson">
+        <meta name="copyright" content="Copyright 2010 TutToaster.com">
+        <meta name="robots" content="follow, index">  -->
+    <!-- <meta name="viewport" content="width=320px, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- Site Theme Styling -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Font Awesome';
+            src: url('/resources/font/fontawesome-webfont.eot'); /* IE9 Compat Modes */
+            src: url('/resources/font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('/resources/font/fontawesome-webfont.woff') format('woff'), /* Modern Browsers */ url('/resources/font/fontawesome-webfont.ttf') format('truetype'), /* Safari, Android, iOS */ url('/resources/font/Yfontawesome-webfont.svg#Font Awesome') format('svg'); /* Legacy iOS */
+        }
+    </style>
+
+
+    <link rel="stylesheet" href="/resources/style/reset.css"/>
+    <link rel="stylesheet" href="/resources/style/swiper.min.css">
+    <link rel="stylesheet" href="/resources/style/global.css?v=0.2.45"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<script id="DS_PRE_JS" type="text/javascript"
+        src="http://tongji.datastory.com.cn/resources/javascripts/pre-ds-min.js?dsTid=142f3765-9930-4f74-9345-da7064a033d5"></script>
+
+<script type="text/javascript">
+    var TEST = "";
+    var APPID = "wxd1d595cb6aacd277";
+
+    var fGetCookie = function (name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null) return unescape(arr[2]);
+        return null;
+    }
+    var auth = fGetCookie("authUserInfo");
+
+    if (TEST != 1) {
+        var userInfoObj = eval();
+        if (userInfoObj == undefined && auth != 1) {
+            var href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + APPID + "&redirect_uri=";
+            href += encodeURIComponent("http://h5m.datastory.com.cn");
+            href += "&response_type=code&scope=snsapi_userinfo#wechat_redirect";
+            location.href = href;
+        }
+
+        if (userInfoObj != undefined) {
+            DS.ready(function () {
+                DS.sendAuthUserInfo(userInfoObj, APPID);
+                $.addCookie("authUserInfo", 1, 7);
+            });
+        }
+    }
+</script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/sha1.js"></script>
+<script type="text/javascript">
+    var dsAppid = "wxd337ea318e724ebb";
+    var ticket = "sM4AOVdWfPE4DxkXGEs8VDXUIggYQ33Y-YCypb7Pb_wD9Zlc8FozAbClDsUVej_WNuoRWt8e3Uo_TP1DeH5s8g";
+
+    wx.config({
+        debug: false,
+        appId: dsAppid,
+        timestamp: 1427436684,
+        nonceStr: 'Wm3WZYTPz0wzccnW',
+        signature: hex_sha1('jsapi_ticket=' + ticket + '&noncestr=Wm3WZYTPz0wzccnW&timestamp=1427436684&url=' + location.href.replace(location.hash, "")),
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+    });
+
+    wx.ready(function () {
+        var share_title = "全国首个微信H5免费监测平台";
+        var share_desc = "全国首个微信H5免费监测平台";
+        var share_link = "http://h5m.datastory.com.cn";
+        var share_img = 'http://social.datastory.com.cn/resources/mobile/images/sociallogo.png';
+
+        DS.ready(function () {
+            wx.onMenuShareAppMessage({
+                title: share_title,
+                desc: share_desc,
+                link: DS.linkChange(share_link),
+                imgUrl: share_img,
+                success: function () {
+                    DS.sendRepost("appMessage");
+                    //other code
+                }
+            });
+            wx.onMenuShareTimeline({
+                title: share_title,
+                desc: share_desc,
+                link: DS.linkChange(share_link),
+                imgUrl: share_img,
+                success: function () {
+                    DS.sendRepost("timeline");
+                    //other code
+                }
+            });
+        });
+    });
+</script>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div id="slide1" class="swiper-slide">
+            <div class="container">
+                <div class="content">
+                    <div class="img-box" style="position:relative;">
+                        <img src="/resources/style/layout/firstpage_pic.png" alt="">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide2" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">传播效果总览</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+
+                    <div class="row">
+                        <ul>
+                            <li>
+                                <div class="nav">
+                                    <label for="label-pv" id="label-pv">--</label>
+
+                                    <div class="nav-content">
+                                        <i class="fa fa-eye"></i>
+
+                                        <div class="bottom-label">浏览量(PV)</div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="nav">
+                                    <label for="label-uv" id="label-uv">--</label>
+
+                                    <div class="nav-content">
+                                        <i class="fa fa-male"></i>
+
+                                        <div class="bottom-label">访客量(UV)</div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li>
+                                <div class="nav">
+                                    <label for="label-share" id="label-share">--</label>
+
+                                    <div class="nav-content">
+                                        <i class="fa fa-share-square-o"></i>
+
+                                        <div class="bottom-label">分享数</div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row">
+                        <ul id="share_road">
+                            <li>
+                                <div class="img-box"><img src="/resources/style/images/page4_pic.png" alt=""></div>
+                                <p>匿名</p>
+
+                                <p><i class="fa fa-eye"></i></p>
+                            </li>
+                            <li>
+                                <div class="img-box"><img src="/resources/style/images/page4_pic.png" alt=""></div>
+                                <p>匿名</p>
+
+                                <p><i class="fa fa-eye"></i></p>
+                            </li>
+                            <li>
+                                <div class="img-box"><img src="/resources/style/images/page4_pic.png" alt=""></div>
+                                <p>匿名</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="slide3" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">传播路径图</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="graph" style="width: 80%; height: 80%; position: relative;" class="img-box">
+                        <div id="graphMarker"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="slide4" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">分享层次</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="shareDist">
+                        <img src="/resources/style/images/page6_pic.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide5" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">关键传播节点</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>头像</th>
+                            <th>昵称</th>
+                            <th>性别</th>
+                            <th>被分享数</th>
+                            <th>带来访客</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table-kol">
+                        <tr>
+                            <td><img src="/resources/style/layout/icon_head.png" alt=""></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide6" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">阅读来源</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="sourceDist">
+                        <img src="/resources/style/images/page6_pic.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide7" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">分享去向</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="v-l1">
+                        <div class="v-item">
+                            <div class="h-l2">
+                                <div class="h-item">
+                                    <img src="/resources/style/layout/icon_wechat_circle.png" alt="">
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <label id="label-timeline" class="label-percent">80%</label>
+                                        </div>
+                                        <div class="v-item">
+                                            <label class="info">分享到朋友圈</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v-item">
+                            <div class="h-l2">
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <label id="label-appMessage" class="label-percent">20%</label>
+                                        </div>
+                                        <div class="v-item">
+                                            <label class="info">分享到对话框</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="h-item">
+                                    <img src="/resources/style/layout/icon_person.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide8" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">访客分析</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="v-l1">
+                        <div class="v-item">
+                            <div class="h-l2">
+                                <div class="h-item">
+                                    <div class="label-circle">
+                                        <label>性别比例</label>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_male.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="male_count">80%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_female.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="female_count">20%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v-item">
+                            <div class="h-l2">
+                                <div class="h-item">
+                                    <div class="label-circle">
+                                        <label>手机型号</label>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_android.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="android_count">20%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_apple.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="iphone_count">50%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v-item">
+                            <div class="h-l2">
+                                <div class="h-item">
+                                    <div class="label-circle">
+                                        <label>网络状态</label>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_wifi.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="wifi_count">20%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h-item">
+                                    <div class="v-l3">
+                                        <div class="v-item">
+                                            <div class="img-box">
+                                                <img src="/resources/style/layout/icon_telecom.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="v-item">
+                                            <label id="telecom_count">50%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="vertical-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide9" class="swiper-slide">
+            <div class="container">
+                <div class="header">
+                    <div class="title">
+                        <div class="title-content">地区分布</div>
+                        <div class="title-bottom"></div>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div id="locationDist">
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <p>地区由IP解析得到</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide10" class="swiper-slide">
+            <div class="container">
+                <div class="v-l1">
+                    <div class="v-item">
+                        <div class="desc">
+                            <div class="title">
+                                <p>DataStory</p>
+                            </div>
+                            <div class="content">
+                                <p>前述数据为本页面的监测数据</p>
+
+                                <p>联系我们，享受更优质服务</p>
+                            </div>
+                            <div class="contact">
+                                <p>电话：<a href="tel:020-38468476">020-38468476</a></p>
+
+                                <p>QQ：1722054484</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v-item">
+                    </div>
+                    <div class="v-item">
+                        <a class="btn btn-info"
+                           href="http://chuanbo.datastory.com.cn/detail?taskId=142f3765-9930-4f74-9345-da7064a033d5&isPublic=1">体验完整版</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="qrcode-container" style="display: none;">
+    <div class="img-box">
+        <img id="img-qrcode" src="/resources/style/layout/qrcode.jpg" alt="qrcode">
+    </div>
+</div>
+<div class="button-next">
+    <img src="/resources/style/layout/icon_next.png" alt="">
+</div>
+
+<div id="load-container">
+    <div class="load-box">
+        <div class="loader">Loading...</div>
+    </div>
+</div>
+
+<!-- jQuery and Nivo Slider -->
+
+
+
+<!-- 加载共用的js -->
+<script type="text/javascript" src="/resources/javascript/lib/jquery-1.10.2.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/resources/javascript/lib/swiper.min.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/moment.min.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/underscore-min.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/highcharts.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/sigma.min.js"></script>
+<script type="text/javascript" src="/resources/javascript/lib/sigma.parsers.gexf.min.js"></script>
+
+<script type="text/javascript" src="/resources/javascript/lib/raphael-min.js"></script>
+
+<script type="text/javascript" src="/resources/javascript/lib/touch-0.2.14.min.js"></script>
+
+<script type="text/javascript" src="/resources/javascript/commons/module.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/commons/extend.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/commons/util.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/commons/tmpl.js?v=0.2.451"></script>
+<script type="text/javascript" src="/resources/javascript/commons/mapChart.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/commons/account.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/commons/vip.js?v=0.2.45"></script>
+<script type="text/javascript" src="/resources/javascript/index.js?v=0.2.45"></script>
+<script type="text/javascript">
+    var conf = {};
+    conf.id = "locationDist";
+    Module.app({
+        vip: {},
+        account: {},
+        mapChart: conf,
+        index: {TEST : TEST}
+    });
+</script>
+</body>
+</html>
