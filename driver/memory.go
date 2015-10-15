@@ -2,7 +2,7 @@ package memory
 
 import (
 	"container/list"
-	"testgo/session"
+	"session"
 	"sync"
 	"time"
 )
