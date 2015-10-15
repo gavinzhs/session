@@ -34,6 +34,14 @@ func (manager *Manager) sessionId() string {
     return base64.URLEncoding.EncodeToString(b)
 }
 
+func (manager *Manager) SessionTest() (session Session) {
+    manager.lock.Lock()
+    defer manager.lock.Unlock()
+        sid := manager.sessionId()
+        session, _ = manager.provider.SessionInit(sid)
+    return
+}
+
 func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (session Session) {
     manager.lock.Lock()
     defer manager.lock.Unlock()
